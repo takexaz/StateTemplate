@@ -1,3 +1,4 @@
-# MyState
+# ZoomState
 
-- Sample state for StateControllerExtension
+- used StateControllerExtension
+- Logical Zoom
