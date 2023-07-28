@@ -1,6 +1,8 @@
+#pragma once
 #include <StateControllerExtension.h>
 struct ST_TEMPLATE {
     EVAL_EXP value;
+    EVAL_EXP param;
     char text[256] = "";
 };
 

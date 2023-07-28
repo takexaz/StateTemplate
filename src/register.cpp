@@ -21,5 +21,10 @@ int stxRegister(TPFILE* tpf, STATE_INFO* sinfo, PLAYER_CACHE* pcache) {
         return FALSE;
     }
 
+    constExp(&temp->param, 0);
+    ptr = TPGetValue(tpf, "param");
+    if (ptr) {
+        num = SCtrlReadExpList(ptr, "n", pcache, &NEXT, &temp->param);
+    }
     return TRUE;
 }

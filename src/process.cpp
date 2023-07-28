@@ -10,5 +10,21 @@ void stxProcess(PLAYER* p, STATE_INFO* sinfo) {
     else {
         Warn(p, temp->text);
     }
+
+    int iparam;
+    float fparam;
+    switch (EvalExpression(p, &temp->param, &iparam, &fparam))
+    {
+    case EVAL_INT:
+        VWarn(p, "INT DETECTED: %d", iparam);
+        break;
+    case EVAL_FLOAT:
+        VWarn(p, "FLOAT DETECTED: %f", fparam);
+        break;
+    default:
+        break;
+    }
+
+
     return;
 }
