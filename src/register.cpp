@@ -5,12 +5,12 @@ int stxRegister(TPFILE* tpf, STATE_INFO* sinfo, PLAYER_CACHE* pcache) {
     ST_TEMPLATE* temp = new ST_TEMPLATE;
     sinfo->params = temp;
 
-    DWORD NEXT;
+    const char* parseEnd;
     const char* ptr;
     int num;
     ptr = TPGetValue(tpf, "value");
     if (ptr) {
-        num = SCtrlReadExpList(ptr, "i", pcache, &NEXT, &temp->value);
+        num = SCtrlReadExpList(ptr, "i", pcache, &parseEnd, &temp->value);
     }
     else {
         setErrorText("Missing value parameter for template");
@@ -24,7 +24,7 @@ int stxRegister(TPFILE* tpf, STATE_INFO* sinfo, PLAYER_CACHE* pcache) {
     constExp(&temp->param, 0);
     ptr = TPGetValue(tpf, "param");
     if (ptr) {
-        num = SCtrlReadExpList(ptr, "n", pcache, &NEXT, &temp->param);
+        num = SCtrlReadExpList(ptr, "n", pcache, &parseEnd, &temp->param);
     }
     return TRUE;
 }
