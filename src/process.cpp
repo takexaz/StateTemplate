@@ -1,25 +1,25 @@
 #include <StateControllerExtension.h>
 #include "_StateTemplate.h"
 
-void stxProcess(PLAYER* p, STATE_INFO* sinfo) {
-    ST_TEMPLATE* temp = (ST_TEMPLATE*)sinfo->params;
-    int value = EvalExpression(p, &temp->value, 0);
+void stxProcess(MUGEN_PLAYER* player, MUGEN_SC_DATA_EX* scdx) {
+    ST_TEMPLATE* temp = (ST_TEMPLATE*)scdx->SCX->params;
+    int value = EvalExpressionN(player, &temp->value, 0);
     if (value < 0) {
-        VWarn(p, "template value too small: %d", value);
+        VWarn(player, "template value too small: %d", value);
     }
     else {
-        Warn(p, temp->text);
+        Warn(player, temp->text);
     }
 
     int iparam;
     float fparam;
-    switch (EvalExpression(p, &temp->param, &iparam, &fparam))
+    switch (EvalExpressionN(player, &temp->param, &iparam, &fparam))
     {
-    case EVAL_INT:
-        VWarn(p, "INT DETECTED: %d", iparam);
+    case EVAL_TYPE_INT:
+        VWarn(player, "INT DETECTED: %d", iparam);
         break;
-    case EVAL_FLOAT:
-        VWarn(p, "FLOAT DETECTED: %f", fparam);
+    case EVAL_TYPE_FLOAT:
+        VWarn(player, "FLOAT DETECTED: %f", fparam);
         break;
     default:
         break;

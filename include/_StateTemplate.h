@@ -1,11 +1,11 @@
 #pragma once
 #include <StateControllerExtension.h>
 struct ST_TEMPLATE {
-    EVAL_EXP value;
-    EVAL_EXP param;
+    MUGEN_EVAL_VALUE value;
+    MUGEN_EVAL_VALUE param;
     char text[256] = "";
 };
 
-int stxRegister(TPFILE*, STATE_INFO*, PLAYER_CACHE*);
-void stxProcess(PLAYER*, STATE_INFO*);
-void stxFree(STATE_INFO*);
+int stxRegister(TPFILE*, MUGEN_SC_DATA_EX*, MUGEN_PLAYER_INFO*);
+void stxProcess(MUGEN_PLAYER*, MUGEN_SC_DATA_EX*);
+void stxFree(MUGEN_SC_DATA_EX*);
